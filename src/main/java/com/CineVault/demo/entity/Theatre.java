@@ -2,6 +2,8 @@ package com.CineVault.demo.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(
@@ -33,6 +35,9 @@ public class Theatre {
 
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
+
+    @OneToMany(mappedBy = "theatre", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Screen> screens = new ArrayList<>();
 
     // Mandatory No-Args Constructor (Required by JPA)
     public Theatre() {
