@@ -15,6 +15,12 @@ import java.util.List;
         }
 )
 public class Screen {
+    @OneToMany(
+            mappedBy = "screen",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Show> shows = new ArrayList<>();
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
